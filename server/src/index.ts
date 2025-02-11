@@ -10,10 +10,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-import AuthRoutes from "@/routes/Auth";
 import ErrorMiddleware from "@/middlewares/ErrorMiddleWare";
+import authenticateUser from "./middlewares/authenticateUser";
+
+import AuthRoutes from "@/routes/Auth";
+import VideoRoutes from "@/routes/Video";
 
 app.use("/api/auth", AuthRoutes);
+app.use("/api/videos", authenticateUser, VideoRoutes);
 
 app.use(ErrorMiddleware);
 
