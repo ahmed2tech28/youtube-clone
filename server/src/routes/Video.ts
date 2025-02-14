@@ -10,9 +10,8 @@ import {
   getUserVideos,
   getVideo,
   toggleLikeVideo,
-  deleteVideo,
-  patchVideo,
-  updateVideo,
+  deleteVideoController,
+  updateVideoDetails,
 } from "@/controllers/Video";
 
 const VideoRouter = Router();
@@ -21,9 +20,8 @@ VideoRouter.post("/upload", uploadVideo);
 VideoRouter.get("/feed", getFeed);
 VideoRouter.route("/video/:videoId")
   .get(getVideo)
-  .put(updateVideo)
-  .patch(patchVideo)
-  .delete(deleteVideo);
+  .put(updateVideoDetails)
+  .delete(deleteVideoController);
 VideoRouter.post("/toggle-like-video/:videoId", toggleLikeVideo);
 VideoRouter.post("/add-comment/:videoId", addComment);
 VideoRouter.delete("/delete-comment/:commentId", deleteComment);
