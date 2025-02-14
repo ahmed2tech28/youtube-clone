@@ -16,6 +16,10 @@ import authenticateUser from "./middlewares/authenticateUser";
 import AuthRoutes from "@/routes/Auth";
 import VideoRoutes from "@/routes/Video";
 
+app.get("/", (req, res) => {
+  res.send("server is healthy");
+});
+
 app.use("/api/auth", AuthRoutes);
 app.use("/api/videos", authenticateUser, VideoRoutes);
 
